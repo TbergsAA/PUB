@@ -7,6 +7,7 @@ class OrdersController < ApplicationController
 
   def create
    binding.pry
+   redirect_to new_order_path
   end
 
   def save
