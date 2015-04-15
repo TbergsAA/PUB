@@ -1,0 +1,18 @@
+<h1>Category: <%= @category.name %></h1>
+<p>id: <%= @category.id %></p>  
+<p>created at: <%= @category.created_at.strftime("%d/%m/%y") %></p>  
+
+<h2> Products </h2> 
+
+<%= link_to "New product", new_admin_product_path(category_id: @category.id) %>
+<hr/>
+<%- @category.products.each do |product| %>
+  <%= product.id %>
+  |
+  <%= product.name %>
+  |
+  <%= product.price / 100 %>: Eur
+  |
+  <%= product.created_at.strftime("%d/%m/%y") %>
+  <br/>
+<% end %>

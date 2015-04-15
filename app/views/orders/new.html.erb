@@ -1,0 +1,20 @@
+<h1>Menu</h1>
+
+<%= form_for @order, as: :order do |f| %>
+  <%= f.fields_for :products, @order.order_products do |order_products| %>
+    <%- @categories.each do |category| %>
+      <h4>
+      <%= category.name %>
+      </h4>  
+        <%- category.products.each do |p|%>
+          </br>
+          <%= p.name %>
+          <%= order_products.check_box :product %>
+        <% end %>
+        <br/>
+      <% end %>
+    </ul>
+    <br/>
+  <% end %>
+  <%= f.submit "Order" %>
+<% end %>
