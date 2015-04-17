@@ -3,9 +3,10 @@
 <%= form_for @order do |f| %>
   <%- @categories.each do |category| %>
     <%= f.fields_for :product do |builder| %>
+      <h4><%= category.name %></h4>
       <%- category.products.each do |product| %>
         <%= product.name %>:
-        <%= builder.check_box :product, {}, product.id %>
+        <%= builder.check_box "product_#{product.id}" %>
         <br/>
       <% end %>
     <% end %>
