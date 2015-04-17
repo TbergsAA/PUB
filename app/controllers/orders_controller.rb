@@ -6,8 +6,14 @@ class OrdersController < ApplicationController
   end
 
   def create
-   binding.pry
-   redirect_to new_order_path
+    if ordered_products.present?
+      order = Order.create
+      ordered_products.each do |id|
+        order.order_products.create(product_id: id)
+      end
+      binding.pry
+    end
+    redirect_to new_order_path
   end
 
   def save
@@ -17,6 +23,14 @@ class OrdersController < ApplicationController
     else
       render :new
     end
+  end
+
+  def ordered_products
+    ids = []
+    params[:order][:products].each do |id|
+      ids << id.first if id.last == "1"  
+    end
+    ids
   end
 
 end

@@ -2,11 +2,11 @@
 
 <%= form_for @order do |f| %>
   <%- @categories.each do |category| %>
-    <%= f.fields_for :product do |builder| %>
+    <%= f.fields_for :products do |builder| %>
       <h4><%= category.name %></h4>
       <%- category.products.each do |product| %>
         <%= product.name %>:
-        <%= builder.check_box "product_#{product.id}" %>
+        <%= builder.check_box product.id %>
         <br/>
       <% end %>
     <% end %>
