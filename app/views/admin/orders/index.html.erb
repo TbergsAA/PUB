@@ -5,8 +5,8 @@
     <tr>
       <td><%= order.id %></td>    
       <td>
-        <%- order.order_products.each do |product| %>
-          <%= Product.find(product.product_id).name %>
+        <%- order.products.each do |product| %>
+          <%= product.name %>
         <% end %>
       </td>
     </tr>
