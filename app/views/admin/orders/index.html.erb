@@ -1,0 +1,14 @@
+<h1>Orders</h1>
+  <br>
+  <%- @orders.each do |order| %>
+  <table style="width:100%">
+    <tr>
+      <td><%= order.id %></td>    
+      <td>
+        <%- order.order_products.each do |product| %>
+          <%= Product.find(product.product_id).name %>
+        <% end %>
+      </td>
+    </tr>
+  </table>
+<% end %>

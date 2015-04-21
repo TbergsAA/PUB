@@ -11,7 +11,6 @@ class OrdersController < ApplicationController
       ordered_products.each do |id|
         order.order_products.create(product_id: id)
       end
-      binding.pry
     end
     redirect_to new_order_path
   end
