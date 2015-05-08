@@ -6,7 +6,9 @@
       <h4><%= category.name %></h4>
       <%- category.products.each do |product| %>
         <%= product.name %>:
+        <%= price_in_euro(product.price)%>
         <%= builder.check_box product.id %>
+        <%= builder.select "count_for_#{product.id}", options_for_select(1..200), {}, {required: false, autofocus: false} %>
         <br/>
       <% end %>
     <% end %>

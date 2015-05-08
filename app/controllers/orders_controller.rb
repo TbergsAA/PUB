@@ -27,7 +27,12 @@ class OrdersController < ApplicationController
   def ordered_products
     ids = []
     params[:order][:products].each do |id|
-      ids << id.first if id.last == "1"  
+      if id.last == "1" 
+        count = params[:order][:products]["count_for_#{id.first}"].to_i
+        count.times do
+          ids << id.first
+        end
+      end
     end
     ids
   end

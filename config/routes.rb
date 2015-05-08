@@ -6,11 +6,11 @@ Rails.application.routes.draw do
   # root 'categories#index'
   resources :orders
 
+  # get "/admin" => "admin#index"
   namespace :admin do
     resources :categories
     resources :products
     resources :orders
-    
   end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
